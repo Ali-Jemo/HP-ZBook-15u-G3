@@ -1,64 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
-
-:root {
-    /* نظام الألوان الرئيسي */
-    --primary-color: #6200ea;
-    --secondary-color: #3700b3;
-    --accent-color: #bb86fc;
-    --background-start: #000;
-    --background-middle: #2a0054;
-    --background-end: #4a0090;
-    --glass-bg: rgba(255, 255, 255, 0.1);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    
-    /* ألوان إضافية للتأثيرات */
-    --glow-color: rgba(98, 0, 234, 0.4);
-    --hover-glow: rgba(98, 0, 234, 0.6);
-    --text-primary: rgba(255, 255, 255, 0.95);
-    --text-secondary: rgba(255, 255, 255, 0.7);
+/* تحسين تحميل الخط */
+@font-face {
+    font-family: 'Cairo';
+    font-display: swap;
+    src: url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 }
-    /* تحسينات CSS للأداء */
-        img {
-            max-width: 100%;
-            height: auto;
-            /* ضغط الصور تلقائياً */
-            loading: lazy;
-        }
 
-        /* تحسين العرض للموبايل */
-        @media (max-width: 768px) {
-            .container {
-                width: 95%;
-                margin: auto;
-            }
-            
-            /* تصغير حجم الخطوط */
-            body {
-                font-size: 16px;
-            }
+/* المتغيرات الأساسية */
+:root {
+    --primary: #6200ea;
+    --accent: #bb86fc;
+    --bg: #000;
+    --text: #fff;
+    --glass: rgba(255, 255, 255, 0.1);
+}
 
-            /* تحسين أزرار الاتصال */
-            .contact-button {
-                width: 100%;
-                margin: 5px 0;
-                padding: 12px;
-            }
-        }
-
-        /* تحسينات عامة للأداء */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* تبسيط التنقل للموبايل */
-        .nav-menu {
-            display: flex;
-            flex-direction: column;
-        }
-
-/* Reset & Base Styles */
+/* إعادة تعيين أساسية */
 * {
     margin: 0;
     padding: 0;
@@ -66,227 +22,55 @@
     font-family: 'Cairo', sans-serif;
 }
 
-/* تأثير الخلفية المتحركة */
 body {
-    background: linear-gradient(135deg, 
-        var(--background-start) 0%, 
-        var(--background-middle) 50%, 
-        var(--background-end) 100%);
-    color: white;
+    background: var(--bg);
+    color: var(--text);
     line-height: 1.6;
-    min-height: 100vh;
-    position: relative;
-    animation: backgroundPulse 15s ease-in-out infinite;
 }
 
-@keyframes backgroundPulse {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
-
-/* تأثير الشبكة المتحركة */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        linear-gradient(90deg, var(--glass-bg) 1px, transparent 1px) 0 0 / 50px 50px,
-        linear-gradient(0deg, var(--glass-bg) 1px, transparent 1px) 0 0 / 50px 50px;
-    pointer-events: none;
-    z-index: -1;
-    animation: gridMove 20s linear infinite;
-}
-
-@keyframes gridMove {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(50px, 50px); }
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    loading: lazy;
 }
 
 .container {
-    max-width: 1200px;
+    width: 95%;
     margin: 0 auto;
-    padding: 20px;
-    position: relative;
+    padding: 15px;
 }
 
-/* تحسين تنسيق فقرة اسم اللابتوب والسعر */
-.laptop-preview {
-    text-align: center;
-    margin-bottom: 40px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
+/* العناوين والنصوص */
+h1 { font-size: 2rem; margin-bottom: 15px; }
+h2 { font-size: 1.5rem; margin-bottom: 10px; }
+h3 { font-size: 1.2rem; margin-bottom: 10px; }
+p { margin-bottom: 10px; }
 
-.laptop-preview h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    color: var(--accent-color);
-    margin: 10px 0;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.price-tag {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-top: 10px;
-    font-weight: 600;
-    text-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    padding: 10px;
+/* البطاقات */
+.card {
+    background: var(--glass);
     border-radius: 10px;
-    display: inline-block;
-    transition: transform 0.3s ease;
-    position: sticky;
-    top: 20px;
-    z-index: 1;
+    padding: 15px;
+    margin: 15px 0;
 }
 
-.price-tag:hover {
-    transform: scale(1.1);
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.laptop-preview img {
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    max-width: 100%;
-    height: auto;
-}
-
-/* تحسين فقرة الاتصال */
-.contact-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 40px 0;
-    padding: 20px;
-    background: linear-gradient(145deg,
-        rgba(255, 255, 255, 0.1),
-        rgba(255, 255, 255, 0.05)
-    );
-    border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
+/* الأزرار */
 .contact-button {
-    background-color: var(--accent-color);
-    color: white;
-    padding: 15px 30px;
-    border-radius: 30px;
+    background: var(--primary);
+    color: var(--text);
+    padding: 12px 25px;
+    border-radius: 5px;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    font-size: 1.2rem;
-    margin: 0 10px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px;
+    text-align: center;
 }
 
 .contact-button:hover {
-    background-color: var(--primary-color);
-    transform: translateY(-3px);
-}
-
-/* تحسين بطاقة السعر */
-.price-tag {
-    background: linear-gradient(135deg, 
-        var(--primary-color), 
-        var(--secondary-color)
-    );
-    padding: 15px 40px;
-    border-radius: 50px;
-    font-size: 2.5rem;
-    font-weight: 900;
-    display: inline-block;
-    margin: 20px 0;
-    box-shadow: 
-        0 8px 25px var(--glow-color),
-        0 0 30px var(--glow-color);
-    position: relative;
-    overflow: hidden;
-    animation: priceFloat 3s ease-in-out infinite;
-}
-
-@keyframes priceFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-/* تأثيرات البطاقات */
-.spec-card {
-    background: linear-gradient(145deg,
-        rgba(255, 255, 255, 0.1),
-        rgba(255, 255, 255, 0.05)
-    );
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 25px;
-    box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.2),
-        inset 0 0 2px var(--glass-border);
-    border: 1px solid var(--glass-border);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-}
-
-.spec-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 
-        0 15px 40px rgba(0, 0, 0, 0.3),
-        0 0 60px var(--glow-color),
-        inset 0 0 4px var(--glass-border);
-}
-
-/* تحسين العناوين والنصوص */
-.spec-title {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: var(--accent-color);
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    text-shadow: 0 0 10px var(--glow-color);
-}
-
-.spec-title i {
-    font-size: 1.5rem;
-    background: linear-gradient(135deg,
-        var(--primary-color),
-        var(--accent-color)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 5px var(--glow-color));
-}
-
-/* تحسين الأزرار */
-.btn {
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-    border: none;
-    color: white;
-    padding: 15px 30px;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-}
-
-/* تأثيرات متحركة عند تحميل الصفحة */
-.fade-in {
-    opacity: 0;
-    animation: fadeIn 1s forwards;
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
+    opacity: 0.9;
 }
 
 /* النافذة المنبثقة */
@@ -297,472 +81,99 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.7);
     z-index: 1000;
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 0;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 500px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    background: linear-gradient(145deg,
-        rgba(255, 255, 255, 0.1),
-        rgba(255, 255, 255, 0.05)
-    );
-    backdrop-filter: blur(20px);
-    padding: 40px;
-    border-radius: 30px;
-    border: 1px solid var(--glass-border);
-    color: white;
-    text-align: center;
-    max-width: 400px;
+    background: var(--glass);
+    padding: 20px;
+    border-radius: 10px;
     width: 90%;
-    animation: modalPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 
-        0 15px 40px rgba(0, 0, 0, 0.3),
-        0 0 80px var(--glow-color);
+    max-width: 400px;
+    margin: 20% auto;
+    color: var(--text);
 }
 
-@keyframes modalPop {
-    0% { 
-        opacity: 0;
-        transform: scale(0.8) translateY(50px);
-    }
-    100% { 
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
+/* الشبكة */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
 }
 
-.modal-header {
-    background-color: #f8f9fa;
-    padding: 15px 20px;
-    border-bottom: 1px solid #dee2e6;
-    border-radius: 8px 8px 0 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.modal-header h2 {
-    margin: 0;
-    color: #333;
-    font-size: 1.5rem;
-}
-
-.close {
-    color: #aaa;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close:hover {
-    color: #000;
-}
-
-.modal-body {
-    padding: 20px;
-}
-
-.contact-option {
-    margin-bottom: 20px;
+/* السعر */
+.price-tag {
+    font-size: 1.8rem;
+    color: var(--accent);
     text-align: center;
-    padding: 15px;
-    border-radius: 6px;
-    background-color: #f8f9fa;
+    padding: 10px;
+    margin: 15px 0;
 }
 
-.contact-option i {
-    font-size: 24px;
-    color: #007bff;
-    margin-bottom: 10px;
-}
-
-.contact-link {
-    display: inline-block;
-    padding: 8px 16px;
-    color: #007bff;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-}
-
-.contact-link:hover {
-    background-color: #007bff;
-    color: white;
-}
-
-.whatsapp {
-    background-color: #25D366;
-    color: white;
-}
-
-.whatsapp:hover {
-    background-color: #128C7E;
-}
-
-.work-hours {
-    color: #666;
-    font-size: 0.9rem;
-}
-
-.modal-footer {
-    padding: 15px 20px;
-    border-top: 1px solid #dee2e6;
-    text-align: left;
-}
-
-.close-btn {
-    background-color: #6c757d;
-    border: none;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.close-btn:hover {
-    background-color: #5a6268;
-}
-
-/* تحسينات للهواتف المحمولة */
-@media (max-width: 768px) {
-    :root {
-        --glow-color: rgba(98, 0, 234, 0.3);
-    }
-
-    .laptop-preview h1 {
-        font-size: 2.5rem;
-    }
-    
-    .price-tag {
-        font-size: 2rem;
-        padding: 12px 30px;
-    }
-    
-    .laptop-preview img {
-        max-width: 90%;
-    }
-
-    .modal-content {
-        width: 95%;
-        margin: 10% auto;
-    }
-    
-    .contact-option {
-        padding: 10px;
-    }
-}
-
-/* تحسين أداء الرسوم المتحركة */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-
-/* تنسيق قسم المواصفات التقنية */
-.tech-specs {
-    margin: 40px 0;
+/* المواصفات */
+.specs-section {
     padding: 20px;
-    background: linear-gradient(145deg,
-        rgba(255, 255, 255, 0.05),
-        rgba(255, 255, 255, 0.02)
-    );
-    border-radius: 30px;
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
+    background: var(--glass);
+    border-radius: 10px;
+    margin: 15px 0;
 }
 
-.tech-specs h2 {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 40px;
-    background: linear-gradient(to right,
-        var(--accent-color),
-        var(--primary-color)
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 20px var(--glow-color);
+.specs-list li {
+    margin: 10px 0;
+    padding-right: 20px;
+    position: relative;
 }
 
 .tech-card {
-    background: linear-gradient(145deg,
-        rgba(255, 255, 255, 0.08),
-        rgba(255, 255, 255, 0.04)
-    );
-    border-radius: 20px;
-    padding: 25px;
-    margin-bottom: 30px;
-    border: 1px solid var(--glass-border);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-.tech-card:hover {
-    transform: translateY(-5px) scale(1.01);
-    box-shadow: 
-        0 15px 40px rgba(0, 0, 0, 0.3),
-        0 0 40px var(--glow-color);
-}
-
-.tech-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(
-        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-        rgba(255, 255, 255, 0.1) 0%,
-        transparent 50%
-    );
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.tech-card:hover::before {
-    opacity: 1;
-}
-
-.tech-card h3 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: var(--accent-color);
-    background-clip: text;
-}
-
-.tech-card h3 i {
-    background: linear-gradient(135deg,
-        var(--primary-color),
-        var(--accent-color)
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 1.5rem;
-    filter: drop-shadow(0 0 5px var(--glow-color));
-}
-
-.tech-card ul {
-    list-style: none;
-    padding: 0;
-}
-
-.tech-card ul li {
-    margin-bottom: 15px;
-    padding-right: 25px;
-    position: relative;
-    color: var(--text-primary);
-    transition: transform 0.3s ease;
-}
-
-.tech-card ul li:hover {
-    transform: translateX(5px);
-}
-
-.tech-card ul li::before {
-    content: '◆';
-    position: absolute;
-    right: 0;
-    color: var(--accent-color);
-    font-size: 0.8rem;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
-}
-
-.tech-card ul li:hover::before {
-    opacity: 1;
-}
-
-/* تنسيق قسم معلومات كروت الشاشة */
-.graphics-details {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    margin-top: 20px;
-}
-
-.gpu {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 20px;
-    border-radius: 15px;
-    border: 1px solid var(--glass-border);
-    transition: all 0.3s ease;
-}
-
-.gpu:hover {
-    background: rgba(255, 255, 255, 0.08);
-    transform: translateY(-3px);
-}
-
-.gpu h4 {
-    color: var(--accent-color);
-    font-size: 1.4rem;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* قسم المقارنات */
-.comparison-bar {
-    height: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
+    background: var(--glass);
+    padding: 15px;
+    border-radius: 10px;
     margin: 10px 0;
-    position: relative;
-    overflow: hidden;
 }
 
-.comparison-fill {
-    height: 100%;
-    background: linear-gradient(90deg,
-        var(--primary-color),
-        var(--accent-color)
-    );
-    border-radius: 4px;
-    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.comparison-label {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-}
-
-/* تنسيق خاص للأجهزة المحمولة */
+/* تحسينات للهواتف */
 @media (max-width: 768px) {
-    .tech-specs h2 {
-        font-size: 2rem;
+    .container { 
+        width: 100%; 
+        padding: 10px;
     }
-
-    .tech-card h3 {
+    
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.3rem; }
+    h3 { font-size: 1.1rem; }
+    
+    .price-tag {
         font-size: 1.5rem;
     }
-
-    .graphics-details {
+    
+    .card, .tech-card {
+        padding: 10px;
+        margin: 10px 0;
+    }
+    
+    .modal-content {
+        margin: 30% auto;
+    }
+    
+    .contact-button {
+        padding: 10px 20px;
+        width: 100%;
+        margin: 5px 0;
+    }
+    
+    .grid {
         grid-template-columns: 1fr;
-    }
-
-    .gpu {
-        padding: 15px;
+        gap: 10px;
     }
 }
 
-/* تأثيرات تفاعلية إضافية */
-@keyframes cardGlow {
-    0%, 100% {
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+/* تحسين الأداء */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        animation: none !important;
+        transition: none !important;
     }
-    50% {
-        box-shadow: 0 8px 32px var(--glow-color);
-    }
-}
-
-.tech-card:hover {
-    animation: cardGlow 2s infinite;
-}
-
-/* تحسين قابلية القراءة للطباعة */
-@media print {
-    .tech-specs {
-        background: none;
-        box-shadow: none;
-    }
-
-    .tech-card {
-        border: 1px solid #ccc;
-        page-break-inside: avoid;
-    }
-}
-
-/* تنسيق فقرة الميزات */
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
-    margin: 40px 0;
-}
-
-.feature-item {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.feature-item:hover {
-    transform: translateY(-5px);
-}
-
-.feature-item i {
-    font-size: 2rem;
-    color: var(--accent-color);
-}
-
-.feature-item p {
-    margin-top: 10px;
-    font-size: 1.2rem;
-    color: var(--text-primary);
-}
-
-/* تنسيق فقرة المواصفات */
-.specs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin: 40px 0;
-}
-
-.spec-item {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 15px;
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.spec-item:hover {
-    transform: translateY(-5px);
-}
-
-.spec-item h3 {
-    font-size: 1.5rem;
-    color: var(--accent-color);
-    margin-bottom: 15px;
-}
-
-.spec-item p {
-    margin: 5px 0;
-    color: var(--text-primary);
-}
-
-.spec-item i {
-    font-size: 1.5rem;
-    margin-right: 10px;
-    color: var(--accent-color);
 }
