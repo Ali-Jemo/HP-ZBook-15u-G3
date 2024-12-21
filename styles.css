@@ -17,6 +17,46 @@
     --text-primary: rgba(255, 255, 255, 0.95);
     --text-secondary: rgba(255, 255, 255, 0.7);
 }
+    /* تحسينات CSS للأداء */
+        img {
+            max-width: 100%;
+            height: auto;
+            /* ضغط الصور تلقائياً */
+            loading: lazy;
+        }
+
+        /* تحسين العرض للموبايل */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                margin: auto;
+            }
+            
+            /* تصغير حجم الخطوط */
+            body {
+                font-size: 16px;
+            }
+
+            /* تحسين أزرار الاتصال */
+            .contact-button {
+                width: 100%;
+                margin: 5px 0;
+                padding: 12px;
+            }
+        }
+
+        /* تحسينات عامة للأداء */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* تبسيط التنقل للموبايل */
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+        }
 
 /* Reset & Base Styles */
 * {
