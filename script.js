@@ -91,3 +91,27 @@ window.onclick = function(event) {
         hideContactModal();
     }
 }
+   window.addEventListener('load', function() {
+        // تحميل Font Awesome بشكل متأخر
+        const fontAwesome = document.createElement('link');
+        fontAwesome.rel = 'stylesheet';
+        fontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
+        document.head.appendChild(fontAwesome);
+    });
+
+    // تحسين أداء النوافذ المنبثقة
+    let modalTimeout;
+    function showContactModal() {
+        clearTimeout(modalTimeout);
+        const modal = document.getElementById('contactModal');
+        modal.style.display = 'block';
+    }
+
+    function hideContactModal() {
+        const modal = document.getElementById('contactModal');
+        modal.style.opacity = '0';
+        modalTimeout = setTimeout(() => {
+            modal.style.display = 'none';
+            modal.style.opacity = '1';
+        }, 200);
+    }
